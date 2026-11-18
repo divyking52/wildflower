@@ -947,26 +947,40 @@ body.is-loading{overflow:hidden}
   padding:calc(var(--nav-h) + 2.25rem) 0 3.5rem;
 }
 .awards-bg{
-  position:absolute;inset:0;z-index:0;pointer-events:none;
+  position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;
 }
-.awards-bg img{
-  position:absolute;top:0;right:0;
-  width:min(58vw,920px);height:100%;
-  object-fit:cover;object-position:62% 28%;
-  filter:saturate(1.1) contrast(1.06) brightness(.95);
+.awards-bg-soft,
+.awards-bg-main{
+  position:absolute;top:0;right:-4%;
+  width:min(78vw,1280px);height:105%;
+  object-fit:cover;object-position:58% 28%;
+  display:block;
+}
+.awards-bg-soft{
+  filter:blur(48px) saturate(1.06) brightness(.84);
+  transform:scale(1.16);
+  transform-origin:right center;
+  opacity:1;
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 28%,rgba(0,0,0,.55) 46%,transparent 60%,transparent 68%,rgba(0,0,0,.5) 84%,#000 100%);
+  mask-image:linear-gradient(90deg,#000 0%,#000 28%,rgba(0,0,0,.55) 46%,transparent 60%,transparent 68%,rgba(0,0,0,.5) 84%,#000 100%);
+}
+.awards-bg-main{
+  filter:saturate(1.1) contrast(1.05) brightness(.97);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.06) 10%,rgba(0,0,0,.28) 22%,rgba(0,0,0,.62) 36%,rgba(0,0,0,.9) 48%,#000 58%,#000 76%,rgba(0,0,0,.55) 88%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.06) 10%,rgba(0,0,0,.28) 22%,rgba(0,0,0,.62) 36%,rgba(0,0,0,.9) 48%,#000 58%,#000 76%,rgba(0,0,0,.55) 88%,transparent 100%);
 }
 .awards-veil{
   position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    linear-gradient(90deg, #08140f 0%, rgba(8,20,15,.94) 28%, rgba(8,20,15,.55) 52%, rgba(8,20,15,.28) 72%, rgba(8,20,15,.42) 100%),
-    linear-gradient(180deg, rgba(8,20,15,.15) 0%, transparent 40%, rgba(8,20,15,.72) 100%);
+    linear-gradient(90deg, #08140f 0%, #08140f 12%, rgba(8,20,15,.82) 26%, rgba(8,20,15,.35) 44%, rgba(8,20,15,.08) 62%, rgba(8,20,15,.04) 78%, rgba(8,20,15,.4) 100%),
+    linear-gradient(180deg, rgba(8,20,15,.16) 0%, transparent 40%, rgba(8,20,15,.8) 100%);
 }
 .awards-mist{display:none}
 .awards-inner{
   position:relative;z-index:2;
-  width:min(1080px,100%);
+  width:min(1360px,100%);
   margin:0 auto;
-  padding:0 clamp(1.25rem,4vw,2rem);
+  padding:0 clamp(1.25rem,3.5vw,2rem);
 }
 .awards-head{
   max-width:34rem;
@@ -1001,17 +1015,19 @@ body.is-loading{overflow:hidden}
 .awards-grid{
   display:flex;
   flex-wrap:nowrap;
-  justify-content:space-between;
+  justify-content:center;
   align-items:stretch;
-  gap:clamp(.85rem,1.6vw,1.25rem);
+  gap:clamp(1.1rem,2vw,1.65rem);
+  width:100%;
+  margin-inline:auto;
 }
 .award-card{
   --award-panel:#0b1c13;
   position:relative;
   margin:0;
-  flex:0 1 248px;
-  width:clamp(200px,22vw,248px);
-  min-height:420px;
+  flex:0 1 320px;
+  width:clamp(260px,24vw,320px);
+  min-height:540px;
   display:flex;flex-direction:column;
   background:var(--award-panel);
   border:1px solid rgba(212,181,106,.55);
@@ -1027,8 +1043,8 @@ body.is-loading{overflow:hidden}
 }
 .award-card-media{
   position:relative;
-  flex:0 0 52%;
-  min-height:168px;
+  flex:0 0 54%;
+  min-height:200px;
   overflow:hidden;
   background:#06140d;
 }
@@ -1054,25 +1070,25 @@ body.is-loading{overflow:hidden}
   flex:1 1 auto;
   display:flex;flex-direction:column;align-items:center;
   text-align:center;
-  gap:.4rem;
-  padding:1.15rem .95rem 1.35rem;
+  gap:.45rem;
+  padding:1.3rem 1.1rem 1.5rem;
   background:var(--award-panel);
 }
 .award-card-icon{
-  width:1.55rem;height:1.55rem;color:var(--award-gold);
-  margin-bottom:.15rem;flex:0 0 auto;
+  width:1.7rem;height:1.7rem;color:var(--award-gold);
+  margin-bottom:.2rem;flex:0 0 auto;
 }
 .award-card-body h3{
   font-family:var(--serif);font-weight:500;
-  font-size:clamp(1.05rem,1.45vw,1.28rem);line-height:1.2;
+  font-size:clamp(1.15rem,1.55vw,1.4rem);line-height:1.2;
   color:var(--award-gold);margin:0;
 }
 .award-card-rule{
-  width:2.4rem;height:1px;background:rgba(212,181,106,.75);
-  margin:.2rem 0 .15rem;
+  width:2.6rem;height:1px;background:rgba(212,181,106,.75);
+  margin:.25rem 0 .2rem;
 }
 .award-card-body p{
-  font-size:.78rem;line-height:1.5;font-weight:300;
+  font-size:.84rem;line-height:1.55;font-weight:300;
   color:rgba(247,241,229,.78);margin:0;
 }
 @media (max-width:980px){
@@ -1084,18 +1100,22 @@ body.is-loading{overflow:hidden}
       linear-gradient(180deg, rgba(8,20,15,.55) 0%, rgba(8,20,15,.35) 42%, rgba(8,20,15,.88) 100%),
       linear-gradient(105deg, rgba(8,20,15,.96) 0%, rgba(8,20,15,.82) 48%, rgba(8,20,15,.45) 100%);
   }
-  .awards-bg img{
-    width:85%;height:58%;top:0;right:-8%;
-    object-position:70% 20%;opacity:.8;
+  .awards-bg-soft,
+  .awards-bg-main{
+    width:88%;height:58%;top:0;right:-8%;
+    object-position:70% 20%;
   }
+  .awards-bg-main{opacity:.85}
   .awards-grid{
     display:grid;
     grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:1rem 1.1rem;
-    justify-content:stretch;
-    max-width:620px;
+    gap:1.1rem 1.2rem;
+    justify-content:center;
+    justify-items:stretch;
+    max-width:720px;
+    margin-inline:auto;
   }
-  .award-card{width:auto;max-width:none;flex:initial;min-height:380px}
+  .award-card{width:auto;max-width:none;flex:initial;min-height:420px}
 }
 @media (max-width:720px){
   .awards{padding:calc(var(--nav-h) + 1.25rem) 0 2.35rem}
@@ -1108,10 +1128,12 @@ body.is-loading{overflow:hidden}
   .awards-head h2 .line + .line::before{content:" "}
   .awards-paw{width:1.1rem;height:1.1rem;margin-left:.25rem}
   .awards-lead{font-size:.88rem;max-width:34ch}
-  .awards-bg img{
+  .awards-bg-soft,
+  .awards-bg-main{
     width:120%;height:48%;top:-2%;right:-28%;
-    object-position:55% 25%;opacity:.5;
+    object-position:55% 25%;
   }
+  .awards-bg-main{opacity:.55}
   .awards-veil{
     background:
       linear-gradient(180deg, rgba(8,20,15,.5) 0%, rgba(8,20,15,.72) 55%, rgba(8,20,15,.94) 100%),
@@ -1735,7 +1757,8 @@ body.is-loading{overflow:hidden}
 
   <section class="awards" id="awards" aria-labelledby="awardsTitle">
     <div class="awards-bg" aria-hidden="true">
-      <img src="assets/newtiger.jpg" alt="">
+      <img class="awards-bg-soft" src="assets/newtiger.jpg" alt="">
+      <img class="awards-bg-main" src="assets/newtiger.jpg" alt="">
     </div>
     <div class="awards-veil" aria-hidden="true"></div>
     <div class="awards-mist" aria-hidden="true"></div>
